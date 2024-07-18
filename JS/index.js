@@ -49,7 +49,7 @@ form.addEventListener('submit', (e) => {
  
   const token = localStorage.getItem("token");
   
-  fetch('http://localhost:3000/api/records/add', {
+  fetch('https://skulrecbackendcod.onrender.com/api/records/add', {
     method: 'POST',
     headers: {
       'Authorization': `Bearer ${token}`,
