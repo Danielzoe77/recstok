@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="output.css">
+  <title>Document</title>
+</head>
+
+<body class="bg-[#f4f4f4]">
+
+  <div class="flex flex-col md:flex-row min-h-screen">
+    <a href="index.html" class="md:absolute h-20 left-4 top-4 p-4 bg-[#112034]">
+      <img class="" src="assets/innoConnect 1.svg" alt="">
+    </a>
+
+    <div class="hidden md:flex  bg-[#112034] flex-1 justify-center items-center p-10">
+      <img src="./assets/schul/Site Stats-amico.png" alt="signup image" class="w-full max-w-md">
+    </div>
+    <div class="flex-1 flex justify-center items-center bg-[#fff] p-10">
+      <div class="w-full max-w-md">
+        <h1 class="text-center font-bold text-3xl md:text-5xl mt-3 mb-4 text-[#4b1f53]">Sign Up</h1>
+        <form action="" class="bg-[#f3ebf4] p-10 rounded-2xl " id="form">
+          <div class="my-4">
+            <label class="block text-gray-700 font-bold my-2 text-sm" for="fullname">
+              Full Name
+            </label>
+            <input class="rounded py-2 px-3  text-gray-700 leading-tight focus:outline-none focus:shadow-outline w-full"
+              id="fullname" type="text" placeholder="Enter your name">
+            <p class="hidden " id="error-fullname">Enter your full name</p>
+          </div>
+          <div class="my-4">
+            <label class="block text-gray-700 font-bold my-2 text-sm" for="email">
+              Email
+            </label>
+            <input class="rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline w-full"
+              id="email" type="email" placeholder="Enter your email">
+            <p class="hidden " id="error-email">Email has already been taken</p>
+          </div>
+          <div class="my-4">
+            <label class="block text-gray-700 font-bold my-2 text-sm" for="password">
+              Password
+            </label>
+            <input class="rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline w-full"
+              id="password" type="password" placeholder="Password">
+            <p class="hidden " id="error-password">Password must be at least 8 characters</p>
+          </div>
+          <div class="my-4">
+            <label class="block text-gray-700 font-bold my-2 text-sm" for="confirm-password">
+              Confirm Password
+            </label>
+            <input class="rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline w-full"
+              id="confirm-password" type="password" placeholder="Confirm Password">
+            <p class="hidden   " id="error">Password does not match</p>
+          </div>
+
+          <button type="submit"
+            class="bg-[#4b1f53] text-white font-semibold w-full rounded py-2 mt-4 hover:bg-[#6f257d] transition duration-300">Submit</button>
+          <div class="flex items-center mt-3">
+            <label for="remember">
+              <input type="checkbox" name="remember" id="remember" class="mr-2">
+              Remember Me
+            </label>
+          </div>
+          <p class="text-base text-center mt-2">Already have an account? <span class="text-[#234270] font-medium"><a
+                href="./login.html">Login</a></span></p>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div id="success-modal" class="hidden fixed inset-0  items-center justify-center z-50 bg-gray-800 bg-opacity-50">
+    <div class="container w-[464px] bg-white p-8 rounded-3xl text-center hover:shadow-lg">
+      <div class="content">
+        <div class="flex justify-center items-center">
+          <img src="./assets/partypopper.png" alt="">
+        </div>
+        <div class="px-10">
+
+          <h1 class="text-xl font-bold my-3">Account successfully created</h1>
+          <p class="text-[#777676] ">Your account creation process has been completed and successful.</p>
+        </div>
+        <button type="submit" id="login-button"
+          class="bg-[#234270] text-white w-full font-semibold rounded py-2 mt-5 hover:bg-[#0d304c] transition duration-300">Proceed
+          to Login</button>
+      </div>
+    </div>
+  </div>
+
+
+
+  <script src="./auth.js"></script>
+</body>
+
+</html>

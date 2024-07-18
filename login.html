@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="output.css">
+  <title>Document</title>
+</head>
+
+<body>
+  <div class="flex flex-col md:flex-row min-h-screen">
+    <a href="index.html" class="md:absolute h-20 left-4 top-4 p-4 bg-[#43154d]">
+      <img class="" src="assets/innoConnect 1.svg" alt="">
+    </a>
+
+    <div class="hidden md:flex  bg-[#112034] flex-1 justify-center items-center p-10">
+      <img src="./assets/schul/Site Stats-amico.png" alt="signup image" class="w-full max-w-md">
+    </div>
+    <div class="flex-1 flex justify-center items-center bg-[#fff] p-10">
+      <div class="container-content flex-1 flex justify-center items-center bg-[#fff] p-5 ">
+        <div class="w-full max-w-md">
+          <h1 class="text-center font-bold text-3xl md:text-4xl mt-3 mb-4 text-[#4b1f53]">Login</h1>
+          <form action="" class="bg-[#f3ebf4] p-8 rounded-2xl" id="form-login">
+
+            <div class="my-4">
+              <label class="block text-gray-700 font-bold my-2 text-sm" for="email">
+                Email
+              </label>
+              <input
+                class="rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline w-full"
+                id="email-login" type="email" placeholder="enter email">
+            </div>
+            <div class="my-4">
+              <label class="block text-gray-700 font-bold my-2 text-sm" for="password">
+                Password
+              </label>
+              <input
+                class="rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline w-full"
+                id="password-login" type="password" placeholder="Password">
+              <p class="hidden" id="login-error">Email or password does not match</p>
+            </div>
+            <button type="submit"
+              class="bg-[#4b1f53] text-white w-full font-semibold rounded py-2 mt-5 hover:bg-[#6f257d] transition duration-300">Login</button>
+            <div class="text-right text-sm text-[#4b1f53] mt-2">
+              <a href="./forgot.html">Forgot Password?</a>
+            </div>
+            <p class="text-base text-center mt-2">Don't have an account? <span class="text-[#234270] font-medium"><a
+                  href="./register.html">Register</a></span></p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <script>
+    const formLogin = document.getElementById("form-login");
+const loginErrorMessage = document.getElementById("login-error");
+const emailInput = document.getElementById("email-login");
+const passwordInput = document.getElementById("password-login");
+
+formLogin.addEventListener("submit", (e) => {
+  e.preventDefault();
+  const email = emailInput.value;
+  const password = passwordInput.value;
+  const userData = { email, password };
+
+  fetch('https://skulrecbackendcod.onrender.com/api/users/login', {
+    method: 'POST',
+    body: JSON.stringify(userData),
+    headers: {
+      'Content-Type': 'application/json'
+    },
+  })
+  .then(response => response.json())
+  .then(data => {
+    if (data.error) {
+      loginErrorMessage.style.display = "block";
+      loginErrorMessage.innerText = data.error;
+    } else if (data.token) {
+      const token = data.token;
+      localStorage.setItem('token', token);
+      window.location = "dashboard.html";
+    } else {
+      loginErrorMessage.style.display = "block";
+      loginErrorMessage.innerText = "Invalid email or password";
+    }
+  })
+  .catch(error => console.error('Error:', error));
+});
+
+  </script>
+</body>
+
+</html>

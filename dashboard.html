@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="output.css" />
+    <link rel="stylesheet" href="dash.css" />
+    <title>Mentee's Dashboard</title>
+    <!-- link to google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&family=Roboto:wght@100;400;500&display=swap"
+      rel="stylesheet"
+    />
+    <!-- fontawesome link -->
+    <script
+      src="https://kit.fontawesome.com/3fff25e001.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <div class="flex relative">
+      <aside
+        class="sticky top-0 left-0 w-1/5 z-10 bg-[#1c2434] h-screen text-[#d2d8e2] items-center justify-around p-4"
+      >
+        <!-- brand logo -->
+        <div class="my-3">
+          <div class="m-1 p-2">
+            <span class="text-2xl">
+              <a href="#">
+                <img src="./assets/logo.png" alt="" />
+              </a>
+            </span>
+          </div>
+        </div>
+        <!-- side buttons -->
+        <div class="mt-7 p-3">
+          <div>
+            <ul>
+              <li
+                class="p-2 m-2 mb-3 text-white hover:bg-white hover:text-blue-950 hover:rounded-lg hover:p-2"
+              >
+                <a href="dashboard.html">
+                  <i class="fa-solid fa-house pr-1"></i>
+                  <span class="font-semibold"> Overview</span>
+                </a>
+              </li>
+
+              <!-- <li class="p-2 m-2 my-7 text-white justify-center items-center hover:bg-white hover:text-blue-950 hover:rounded-lg hover:p-2">
+                        <a href="" class="flex">
+                            <i class="fa-solid fa-book-open pr-2"></i>
+                            <span class="font-semibold">Courses</span>
+                        </a>
+                    </li> -->
+              <li
+                class="p-2 m-2 my-7 text-white hover:bg-white hover:text-blue-950 hover:rounded-lg hover:p-2"
+              >
+                <a href="message.html">
+                  <i class="fa-regular fa-comments pr-1"></i>
+                  <span class="font-semibold">Messages</span>
+                </a>
+              </li>
+              <!-- <li class="p-2 m-2 my-7  text-white hover:bg-white hover:text-blue-950 hover:rounded-lg hover:p-2">
+                        <a href="">
+                            <i class="fa-solid fa-graduation-cap pr-1"></i>
+                            <span class="font-semibold"> Mentorship</span>
+                        </a>
+                    </li> -->
+              <li
+                class="p-2 m-2 my-7 text-white hover:bg-white hover:text-blue-950 hover:rounded-lg hover:p-2"
+              >
+                <a href="">
+                  <i class="fa-solid fa-user-group pr-1"></i>
+                  <span class="font-semibold"> Community</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- sign out button -->
+        <div>
+          <button
+            class="p-1 m-2 text-center justify-center text-white hover:bg-white hover:text-blue-950 hover:rounded-lg hover:p-2 hover:pr-5"
+          >
+            <a href="">
+              <i class="fa-regular fa-circle-left pr-1"></i>
+              <span class="font-semibold" id="logout">Logout</span>
+            </a>
+          </button>
+        </div>
+      </aside>
+
+      <!-- dashbaord body -->
+      <main class="relative flex flex-col w-4/5 bg-zinc-100">
+        <header
+          class="sticky top-0 right-0 z-50 flex py-2 items-center justify-between drop-shadow-sm bg-[#ffffff]"
+        >   
+          
+          <div class="flex-col ml-2 pl-9">
+            <div class="">
+              <h3 class="font-bold">  <span id="greeting"></span> </h3>
+            </div>
+          </div>
+
+          <!-- search bar -->
+          <div class="mb-4 flex items-center justify-center mt-1 ml-[35px]">
+            <div
+              class="flex border-2 border-gray-300 rounded-xl px-2 py-1 w-80"
+            >
+              <i
+                class="fas fa-search text-xl text-slate-500 align-center p-1"
+              ></i>
+              <input
+                type="text"
+                id="search"
+                class="text-gray-500 py-1 pr-2 w-72 focus:outline-none"
+                placeholder="Search for courses"
+              />
+            </div>
+          </div>
+
+          <!-- notification bell and profile  -->
+          <div class="flex items-center">
+            <!-- bell -->
+            <div class="px-2">
+              <a href="" class="w-5 text-xl">
+                <i class="fa-solid fa-bell text-gray-700"></i>
+              </a>
+            </div>
+            <div class="dropdown group item relative z-50">
+              <div
+                href="#"
+                class="dropdownbtn flex items-center cursor-pointer font-medium text-lg text-[#1D3557] px-4 py-2"
+              >
+                <a
+                  href="#"
+                  class="text-white font-semibold w-30 border bg-[#4b1f53] border-secondary-06 text-center rounded-lg px-4 py-2 block active:bg-secondary-07 hover:shadow-btn"
+                >
+                  Add Record
+                  <i
+                    class="ml-3 text-xs transition-all duration-100 fa-solid fa-angle-down"
+                  ></i>
+                </a>
+              </div>
+              <div
+                class="menu hidden absolute right-2 bg-white w-52 mt-4 rounded-b transition ease-linear duration-100 divide-y divide-slate-300"
+              >
+                <a
+                  href="#"
+                  class="text-gray-800 px-4 py-2 block hover:bg-slate-200"
+                  onclick="openForm()"
+                  id="school-fees-button"
+                  >School Fees</a
+                >
+                <a
+                  href="#"
+                  class="text-gray-800 px-4 py-2 block hover:bg-slate-200"
+                  >Examination Fees</a
+                >
+                <a
+                  href="settings.html"
+                  class="text-gray-800 px-4 py-2 block hover:bg-slate-200"
+                  >Celebration Fees</a
+                >
+              </div>
+            </div>
+            <!-- Popup form -->
+            <div class="form-popup" id="myForm">
+              <form action="" id="paymentForm" class="form-container">
+                <h1
+                  class="text-center font-medium text-lg md:text-3xl mt-1 mb-2 text-[#234270]"
+                >
+                  School Fees
+                </h1>
+
+                <label class="text-gray-700 font-bold my-3 text-lg" for="email">
+                    Class:
+                </label>
+                <input
+                  class="rounded border-2 border-gray-300 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline w-full"
+                  type="text" id="className"
+                  placeholder="enter class"
+                />
+                <label class="text-gray-700 font-bold my-3 text-lg" for="email">
+                    Name of Pupil:
+                  </label>
+                  <input
+                    class="rounded border-2 border-gray-300 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline w-full"
+                    type="text" id="studentName"
+                    placeholder="enter name"
+                  />
+                  <label class="text-gray-700 font-bold my-3 text-lg" for="email">
+                    Total Amount to be Paid
+                  </label>
+                  <input
+                    class="rounded border-2 border-gray-300 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline w-full"
+                    type="number" id="amountToBePaid"
+                    placeholder="1200000"
+                  />
+                <label class="text-gray-700 font-bold my-3 text-lg" for="email">
+                    Amount Deposited:
+                </label>
+                <input
+                  class="rounded border-2 border-gray-300 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline w-full"
+                  type="number" id="amountDeposited"
+                  placeholder="23000"
+                />
+                <!-- <input class="rounded" type="password" placeholder="Enter Password" name="psw" required> -->
+                <button
+                  type="submit"
+                  class="bg-[#4b1f53] text-white w-full font-semibold rounded py-2 mt-5 hover:bg-[#0d304c] transition duration-300"
+                >
+              Add Record
+                </button>
+                <!-- <button type="submit" class="btn">Login</button> -->
+                <button type="button" class="btn cancel py-1 mt-5" onclick="closeForm()">
+                  Close
+                </button>
+              </form>
+            </div>
+
+            <!-- <div class="dropdown group item relative z-50">
+                        <div href="#" class="dropdownbtn flex items-center cursor-pointer font-medium text-lg text-[#1D3557] px-4 py-2">
+                            <img class="w-14" src="./assets/menee.png" alt="">
+                            <i class="ml-3 text-xs transition-all duration-100 fa-solid fa-angle-down"></i>
+                        </div>
+                        <div class="menu hidden absolute right-2 bg-white w-52 mt-4 rounded-b transition ease-linear duration-100 divide-y divide-slate-300">
+                            <a href="dashboard.html" class="text-gray-800 px-4  py-2 block hover:bg-slate-200 ">Dashboard</a>
+                            <a href="profile.html" class="text-gray-800 px-4  py-2 block hover:bg-slate-200">My Profile</a>
+                            <a href="settings.html" class="text-gray-800 px-4  py-2 block hover:bg-slate-200">Account Settingsr</a>
+                         
+                        </div>
+                    </div>                -->
+          </div>
+        </header>
+
+        <!-- main body -->
+        <div class="px-6 z-0">
+          <div class="containe">
+            <h1
+              class="text-center font-semibold text-1xl md:text-5xl mt-3 mb-4 text-[#4c1f54]"
+            >
+              Records
+            </h1>
+            <table class="chair" id="recordsTable">
+              <thead>
+                <tr>
+                  <th>Class</th>
+                  <th>Name of Pupil</th>
+                  <th>Total Amount to be Paid</th>
+                  <th>Amount Deposited</th>
+                  <th>Balance</th>
+                  <th>Edit</th>
+                  <th>Delete</th>
+                </tr>
+              </thead>
+              <tbody id="recordstbody">
+                <!-- Records will be added here -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <script src="./JS/index.js"></script>
+  </body>
+</html>

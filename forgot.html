@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="output.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <title>Document</title>
+</head>
+
+<body>
+  <div class="flex flex-col md:flex-row min-h-screen">
+    <a href="index.html" class="md:absolute h-20 left-4 top-4 p-4 bg-[#112034]">
+      <img class="" src="assets/innoConnect 1.svg" alt="">
+    </a>
+
+    <div class="hidden md:flex  bg-[#112034] flex-1 justify-center items-center p-10">
+      <img src="./assets/amico.png" alt="signup image" class="w-full max-w-md">
+    </div>
+    <div class="container-content flex-1 flex justify-center items-center bg-[#fff] p-5 ">
+      <div class="w-full max-w-md">
+        <h1 class="text-center font-bold text-3xl md:text-4xl mt-3 mb-4 text-[#234270]">Forgot Password</h1>
+        <form action="" class="bg-[#F6F9FA] p-8 rounded-2xl" id="forgot-form">
+          <p class="text-lg my-4">Enter your email to recover your password</p>
+          <div class="my-4">
+            <label class="block text-gray-700 font-bold my-2 text-sm" for="email">
+              Email
+            </label>
+            <input class="rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline w-full"
+              id="email" type="email" placeholder="johndoe@gmail.com">
+          </div>
+          <button type="submit"
+            class="bg-[#234270] text-white w-full font-semibold rounded py-2 mt-5 hover:bg-[#0d304c] transition duration-300">Request
+            reset link</button>
+          <p class=" text-center text-[#234270] my-2"> <a href="./login.html">Back to Login</a></p>
+        </form>
+      </div>
+    </div>
+  </div>
+  </div>
+
+  <!-- for correct email address that has been registered or sign up -->
+  <div id="success-forgot" class="hidden fixed inset-0  items-center justify-center z-50 bg-gray-800 bg-opacity-50">
+    <div class="container w-[464px] bg-white p-8 rounded-3xl text-center hover:shadow-lg">
+      <div class="content">
+        <div class="flex justify-center items-center">
+          <img src="./assets/Circle.png" alt="">
+        </div>
+        <div class="px-10">
+
+          <h1 class="text-xl font-bold my-3">Link sent to email address</h1>
+          <p class="text-[#777676] ">Check email to reset password.</p>
+        </div>
+        <button id="forgot-button"
+          class="bg-[#234270] text-white w-full font-semibold rounded py-2 mt-5 hover:bg-[#0d304c] transition duration-300">Ok</button>
+      </div>
+    </div>
+  </div>
+
+  <!--for wrong email  -->
+  <div id="forgot-modal" class="hidden fixed inset-0  items-center justify-center z-50 bg-gray-800 bg-opacity-50">
+    <div class="container w-[464px] bg-white p-8 rounded-3xl text-center hover:shadow-lg">
+      <div class="content">
+        <div class="flex justify-center items-center">
+          <img src="./assets/close-circle.png" alt="">
+        </div>
+        <div class="px-10">
+
+          <h1 class="text-xl font-bold my-3">Invalid email</h1>
+          <p class="text-[#777676] ">Email not found, kindly check and try again.</p>
+        </div>
+        <button id="try-button"
+          class="bg-[#234270] text-white w-full font-semibold rounded py-2 mt-5 hover:bg-[#0d304c] transition duration-300">Try
+          Again</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const email = document.getElementById("email")
+    const forgotForm = document.getElementById("forgot-form")
+    const forgotBtn = document.getElementById("forgot-button")
+    const forgotModal = document.getElementById("success-forgot");
+    const tryAgainBtn = document.getElementById("try-button");
+    const emailModal = document.getElementById("forgot-modal");
+    const user = {
+      // fullName: fullName.value,
+      email: email.value,
+      // password: password.value,
+      // confirmPassword: confirmPassword.value
+    }
+    let users = JSON.parse(localStorage.getItem('users')) || []
+
+
+
+    // when forgot email is wrong
+    function forgotEmail() {
+      // const emailModal = document.getElementById("forgot-modal");
+      emailModal.classList.remove("hidden");
+      emailModal.style.display = "flex"
+    }
+
+    function validateEmail() {
+      const emailForget = users.find((u) => u.email === user.email)
+      if (emailForget) {
+        showForgotModal();
+      } else {
+        // Email not found, show the "Invalid email" modal
+        forgotEmail();
+      }
+    }
+    function showForgotModal() {
+      // const forgotModal = document.getElementById("success-forgot");
+      forgotModal.classList.remove("hidden");
+      forgotModal.style.display = "flex"
+    }
+
+    forgotBtn.addEventListener("click", function () {
+      forgotModal.classList.add("hidden");
+      forgotModal.style.display = "none"
+    })
+    tryAgainBtn.addEventListener("click", function () {
+      // emailModal.classList.add("hidden");
+      // emailModal.style.display = "none"
+      window.location.reload()
+    })
+
+    forgotForm.addEventListener("submit", function (e) {
+      e.preventDefault();
+      // showForgotModal()
+      validateEmail()
+    })
+
+
+  </script>
+</body>
+
+</html>
